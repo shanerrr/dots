@@ -1,3 +1,7 @@
+wiremix
+extra/ttf-cascadia-mono-nerd
+rofi
+
 Within the root of this repo, just run `stow .`
 
 Just requires gnustow - `pacman -S stow`
