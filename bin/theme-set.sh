@@ -5,8 +5,8 @@ if [[ -z $1 && $1 != "CNCLD" ]]; then
   exit 1
 fi
 
-THEMES_DIR="$HOME/.config/preferences/themes/"
-CURRENT_THEME_DIR="$HOME/.config/preferences/current/theme"
+THEMES_DIR="$HOME/.dotfiles/.config/preferences/themes/"
+CURRENT_THEME_DIR="$HOME/.dotfiles/.config/preferences/current/theme"
 
 THEME_NAME=$(echo "$1" | sed -E 's/<[^>]+>//g' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 THEME_PATH="$THEMES_DIR/$THEME_NAME"
@@ -21,7 +21,7 @@ fi
 ln -nsf "$THEME_PATH" "$CURRENT_THEME_DIR"
 
 # Restart components to apply new theme
-restart-app waybar
+bash restart-app.sh waybar
 hyprctl reload
 pkill -SIGUSR2 btop
 
