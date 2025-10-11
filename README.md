@@ -3,6 +3,7 @@ extra/ttf-cascadia-mono-nerd
 rofi
 uwsm
 libnewt
+mise
 
 Within the root of this repo, just run `stow .`
 

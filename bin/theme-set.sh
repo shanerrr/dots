@@ -17,7 +17,8 @@ if [[ ! -d "$THEME_PATH" ]]; then
   exit 1
 fi
 
-# Update theme symlinks
+# Always remove destination before symlinking
+rm -rf "$CURRENT_THEME_DIR"
 ln -nsf "$THEME_PATH" "$CURRENT_THEME_DIR"
 
 # Restart components to apply new theme
