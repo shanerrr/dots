@@ -1,0 +1,8 @@
+* {
+	background: #121212;
+	border: #595959;
+	text: #eaeaea;
+	surface: #333333;
+	primary: #ffc107;
+	
+}

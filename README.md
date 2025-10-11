@@ -1,6 +1,8 @@
 wiremix
 extra/ttf-cascadia-mono-nerd
 rofi
+uwsm
+libnewt
 
 Within the root of this repo, just run `stow .`
 
