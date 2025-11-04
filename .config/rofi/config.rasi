@@ -2,10 +2,10 @@
 configuration {
 	modi:                       "drun,run";
     show-icons:                 false;
-    display-drun:               "";
-    display-run:                "";
-    display-filebrowser:        "";
-    display-window:             "";
+    display-drun:               " ";
+    display-run:                " ";
+    display-filebrowser:        " ";
+    display-window:             " ";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
   show-icons:                 true;
@@ -13,7 +13,7 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "~/.config/preferences/current/theme/rofi.colors.rasi"
+@import                          "../preferences/current/theme/rofi.colors.rasi"
 * {
     border-colour:               var(selected);
     handle-colour:               var(foreground);
