@@ -1,5 +1,4 @@
-@define-color foreground #8a8a8d;
-@define-color background rgba(30, 30, 30, 0.75);
+@import '../preferences/current/theme/waybar.css';
 
 * {
   background-color: transparent;
