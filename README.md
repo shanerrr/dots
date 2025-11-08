@@ -4,6 +4,7 @@ rofi
 uwsm
 libnewt
 mise
+wl-clipboard
 
 Within the root of this repo, just run `stow .`
 

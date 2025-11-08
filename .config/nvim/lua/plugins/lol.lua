@@ -1,4 +1,4 @@
-return { 
+return {
 {
   "nvim-lualine/lualine.nvim",
   optional = true,
@@ -7,5 +7,5 @@ return {
       table.insert(opts.sections.lualine_c, { "navic", color_correction = "dynamic" })
     end
   end,
-  }
+}
 }
