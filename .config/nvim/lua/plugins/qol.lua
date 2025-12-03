@@ -3,11 +3,11 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
     ---@type snacks.Config
     opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
       explorer = {enabled = true },
       bigfile = { enabled = true },
       dashboard = { enabled = true },
@@ -21,7 +21,7 @@ return {
       statuscolumn = { enabled = true },
       words = { enabled = true },
     },
-     keys = {
+    keys = {
       {
         '<C-b>',
         function()
