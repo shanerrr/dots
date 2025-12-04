@@ -59,60 +59,37 @@ return {
         },
       }
 
---  if LazyVim.has("neo-tree.nvim") then
---    local pos = {
---      filesystem = "left",
---      buffers = "top",
---      git_status = "right",
---      document_symbols = "bottom",
---      diagnostics = "bottom",
---    }
---    local sources = LazyVim.opts("neo-tree.nvim").sources or {}
---    for i, v in ipairs(sources) do
---      table.insert(opts.left, i, {
---        title = "Neo-Tree " .. v:gsub("_", " "):gsub("^%l", string.upper),
---        ft = "neo-tree",
---        filter = function(buf)
---          return vim.b[buf].neo_tree_source == v
---        end,
---        pinned = true,
---        open = function()
---          vim.cmd(("Neotree show position=%s %s dir=%s"):format(pos[v] or "bottom", v, LazyVim.root()))
---        end,
---      })
---    end
---  end
---
-  -- trouble
-  for _, pos in ipairs({ "top", "bottom", "left", "right" }) do
-    opts[pos] = opts[pos] or {}
-    table.insert(opts[pos], {
-      ft = "trouble",
-      filter = function(_buf, win)
-        return vim.w[win].trouble
-          and vim.w[win].trouble.position == pos
-          and vim.w[win].trouble.type == "split"
-          and vim.w[win].trouble.relative == "editor"
-          and not vim.w[win].trouble_preview
-      end,
-    })
-  end
+      -- trouble
+      for _, pos in ipairs({ "top", "bottom", "left", "right" }) do
+        opts[pos] = opts[pos] or {}
+        table.insert(opts[pos], {
+          ft = "trouble",
+          filter = function(_buf, win)
+            return vim.w[win].trouble
+            and vim.w[win].trouble.position == pos
+            and vim.w[win].trouble.type == "split"
+            and vim.w[win].trouble.relative == "editor"
+            and not vim.w[win].trouble_preview
+          end,
+        })
+      end
 
-  -- snacks terminal
-  for _, pos in ipairs({ "top", "bottom", "left", "right" }) do
-    opts[pos] = opts[pos] or {}
-    table.insert(opts[pos], {
-      ft = "snacks_terminal",
-      size = { height = 0.4 },
-      title = "%{b:snacks_terminal.id}: %{b:term_title}",
-      filter = function(_buf, win)
-        return vim.w[win].snacks_win
-          and vim.w[win].snacks_win.position == pos
-          and vim.w[win].snacks_win.relative == "editor"
-          and not vim.w[win].trouble_preview
-      end,
-    })
-  end
-  return opts
-end}
+      -- snacks terminal
+      for _, pos in ipairs({ "top", "bottom", "left", "right" }) do
+        opts[pos] = opts[pos] or {}
+        table.insert(opts[pos], {
+          ft = "snacks_terminal",
+          size = { height = 0.3 },
+          title = "%{b:snacks_terminal.id}: %{b:term_title}",
+          filter = function(_buf, win)
+            return vim.w[win].snacks_win
+            and vim.w[win].snacks_win.position == pos
+            and vim.w[win].snacks_win.relative == "editor"
+            and not vim.w[win].trouble_preview
+          end,
+        })
+      end
+      return opts
+    end
+  }
 }

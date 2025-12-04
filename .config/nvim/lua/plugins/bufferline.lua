@@ -14,12 +14,11 @@ return {
       }
     },
     keys = {
-      { "<Leader>m", "<Cmd>BufferLineCyclePrev<Cr>", desc = "Previous buffer" },
+      { "<Leader>,", "<Cmd>BufferLineCyclePrev<Cr>", desc = "Previous buffer" },
       { "<Leader>.", "<Cmd>BufferLineCycleNext<Cr>", desc = "Next buffer" },
-      { "<Leader>M", "<Cmd>BufferLineMovePrev<Cr>",  desc = "Move buffertab left" },
-      { "<Leader>:", "<Cmd>BufferLineMoveNext<Cr>",  desc = "Move buffertab right" },
-      { "<Leader>,", "<Cmd>BufferLinePick<Cr>",      desc = "Show buffertab targets" },
-
+      { "<Leader><", "<Cmd>BufferLineMovePrev<Cr>",  desc = "Move buffertab left" },
+      { "<Leader>>", "<Cmd>BufferLineMoveNext<Cr>",  desc = "Move buffertab right" },
+      { "<Leader>m", "<Cmd>BufferLinePick<Cr>",      desc = "Show buffertab targets" },
     }
   }
 }
