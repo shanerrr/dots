@@ -33,7 +33,7 @@ return {
       scroll = { enabled = true },
       statuscolumn = { enabled = true },
       words = { enabled = true },
-      terminal = { enabled = true, close_on_exit = true },
+      terminal = { enabled = true },
       dashboard = {
         preset = {
         pick = nil,
@@ -80,7 +80,8 @@ return {
      { "<leader>fb", function() Snacks.picker("buffers") end, desc = "Pick Buffers",        mode = "n" },
      { "<leader>fg", function() Snacks.picker("grep") end,    desc = "Live Grep",           mode = "n" },
      { "<C-j>", function() Snacks.terminal.toggle() end,      desc = "Terminal (cwd)",      mode = {"n", "t"} },
-     { "<C-n>", function() Snacks.terminal.open() end,        desc = "New Terminal (cwd)",  mode = "t" },
+     { "<C-t>", function() Snacks.terminal.open() end,        desc = "New Terminal (cwd)",  mode = "t" },
+     { "<leader>tl", function() Snacks.terminal.list() end,   desc = "List Terminal (cwd)",  mode = "n" },
    }
   }
 }
