@@ -7,6 +7,11 @@ return {
     end,
   },
   {
+    "folke/persistence.nvim",
+    event = "BufReadPre", -- this will only start session saving when an actual file was opened
+    opts = {}
+  },
+  {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
@@ -15,17 +20,50 @@ return {
     },
     ---@type snacks.Config
     opts = {
-      explorer = { 
-        enabled = true, 
-        replace_netrw = true,
+      lazygit = {
+        configure = true,
+        -- extra configuration for lazygit that will be merged with the default
+        -- snacks does NOT have a full yaml parser, so if you need `"test"` to appear with the quotes
+        -- you need to double quote it: `"\"test\""`
+        config = {
+          os = { editPreset = "nvim-remote" },
+          gui = {
+            nerdFontsVersion = "3",
+          },
+        },
+        theme_path = vim.fs.normalize(vim.fn.stdpath("cache") .. "/lazygit-theme.yml"),
+        -- Theme for lazygit
+        theme = {
+          [241]                      = { fg = "Special" },
+          activeBorderColor          = { fg = "MatchParen", bold = true },
+          cherryPickedCommitBgColor  = { fg = "Identifier" },
+          cherryPickedCommitFgColor  = { fg = "Function" },
+          defaultFgColor             = { fg = "Normal" },
+          inactiveBorderColor        = { fg = "FloatBorder" },
+          optionsTextColor           = { fg = "Function" },
+          searchingActiveBorderColor = { fg = "MatchParen", bold = true },
+          selectedLineBgColor        = { bg = "Visual" }, -- set to `default` to have no background colour
+          unstagedChangesColor       = { fg = "DiagnosticError" },
+        },
+        win = {
+          style = "lazygit",
+        },
+      },
+      explorer = {
+        enabled = true,
+        hidden = true
       },
       bigfile = { enabled = true },
-      dashboard = { enabled = true },
       indent = { enabled = true },
       input = { enabled = true },
       picker = { 
         enabled = true, 
         layout = "telescope", 
+        sources = {
+          explorer = {
+            hidden = true;
+          }
+        }
       },
       notifier = { enabled = true },
       quickfile = { enabled = true },
@@ -81,7 +119,8 @@ return {
      { "<leader>fg", function() Snacks.picker("grep") end,    desc = "Live Grep",           mode = "n" },
      { "<C-j>", function() Snacks.terminal.toggle() end,      desc = "Terminal (cwd)",      mode = {"n", "t"} },
      { "<C-t>", function() Snacks.terminal.open() end,        desc = "New Terminal (cwd)",  mode = "t" },
-     { "<leader>tl", function() Snacks.terminal.list() end,   desc = "List Terminal (cwd)",  mode = "n" },
+     { "<leader>tl", function() Snacks.terminal.list() end,   desc = "List Terminal (cwd)", mode = "n" },
+     { "<C-g>", function() Snacks.lazygit.open() end,    desc = "Lazy Git",            mode = "n" },
    }
   }
 }
