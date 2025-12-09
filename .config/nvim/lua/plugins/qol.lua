@@ -22,9 +22,6 @@ return {
     opts = {
       lazygit = {
         configure = true,
-        -- extra configuration for lazygit that will be merged with the default
-        -- snacks does NOT have a full yaml parser, so if you need `"test"` to appear with the quotes
-        -- you need to double quote it: `"\"test\""`
         config = {
           os = { editPreset = "nvim-remote" },
           gui = {
@@ -32,7 +29,6 @@ return {
           },
         },
         theme_path = vim.fs.normalize(vim.fn.stdpath("cache") .. "/lazygit-theme.yml"),
-        -- Theme for lazygit
         theme = {
           [241]                      = { fg = "Special" },
           activeBorderColor          = { fg = "MatchParen", bold = true },
@@ -51,7 +47,6 @@ return {
       },
       explorer = {
         enabled = true,
-        hidden = true
       },
       bigfile = { enabled = true },
       indent = { enabled = true },
@@ -61,9 +56,17 @@ return {
         layout = "telescope", 
         sources = {
           explorer = {
-            hidden = true;
+            follow_file = true,
+            replace_netrw = true,
+            hidden = true,
+            cwd = vim.fn.expand('%:p:h')
           }
-        }
+        },
+        formatters = {
+          file = {
+            filename_first = true,
+          },
+        },
       },
       notifier = { enabled = true },
       quickfile = { enabled = true },
@@ -110,17 +113,17 @@ return {
      },
    },
    keys = {
-     { "<C-b>", function() Snacks.explorer() end,             desc = "Open explorer",       mode = "n" },
-     { "<leader>bd", function() Snacks.bufdelete() end,       desc = "Buffer delete",       mode = "n" },
-     { "<leader>ba", function() Snacks.bufdelete.all() end,   desc = "Buffer delete all",   mode = "n" },
-     { "<leader>bo", function() Snacks.bufdelete.other() end, desc = "Buffer delete other", mode = "n" },
-     { "<leader>ff", function() Snacks.picker("files") end,   desc = "Pick Files",          mode = "n" },
-     { "<leader>fb", function() Snacks.picker("buffers") end, desc = "Pick Buffers",        mode = "n" },
-     { "<leader>fg", function() Snacks.picker("grep") end,    desc = "Live Grep",           mode = "n" },
-     { "<C-j>", function() Snacks.terminal.toggle() end,      desc = "Terminal (cwd)",      mode = {"n", "t"} },
-     { "<C-t>", function() Snacks.terminal.open() end,        desc = "New Terminal (cwd)",  mode = "t" },
-     { "<leader>tl", function() Snacks.terminal.list() end,   desc = "List Terminal (cwd)", mode = "n" },
-     { "<C-g>", function() Snacks.lazygit.open() end,    desc = "Lazy Git",            mode = "n" },
+     { "<C-b>", function() Snacks.explorer() end,                                     desc = "Open explorer",       mode = "n" },
+     { "<leader>bd", function() Snacks.bufdelete() end,                               desc = "Buffer delete",       mode = "n" },
+     { "<leader>ba", function() Snacks.bufdelete.all() end,                           desc = "Buffer delete all",   mode = "n" },
+     { "<leader>bo", function() Snacks.bufdelete.other() end,                         desc = "Buffer delete other", mode = "n" },
+     { "<leader>ff", function() Snacks.picker("files") end,                           desc = "Pick Files",          mode = "n" },
+     { "<leader>fb", function() Snacks.picker("buffers") end,                         desc = "Pick Buffers",        mode = "n" },
+     { "<leader>fg", function() Snacks.picker("grep") end,                            desc = "Live Grep",           mode = "n" },
+     { "<C-j>", function() Snacks.terminal.toggle() end,                              desc = "Terminal (cwd)",      mode = {"n", "t"} },
+     { "<C-t>", function() Snacks.terminal.open() end,                                desc = "New Terminal (cwd)",  mode = "t" },
+     { "<leader>tl", function() Snacks.terminal.list() end,                           desc = "List Terminal (cwd)", mode = "n" },
+     { "<C-g>", function() Snacks.lazygit.open({cwd = vim.fn.expand('%:p:h')}) end,   desc = "Lazy Git",            mode = "n" },
+     }
    }
-  }
 }
