@@ -32,7 +32,7 @@ return {
 			-- C-n/C-p or Up/Down: Select next/previous item
 			-- C-e: Hide menu
 			-- C-k: Toggle signature help (if signature.enabled = true)
-			keymap = { preset = "default", ["<CR>"] = { "accept", "fallback" }, ["<C><leader>"] = { "show" } },
+			keymap = { preset = "default", ["<tab>"] = { "accept", "fallback" }, ["<C><leader>"] = { "show" } },
 			appearance = {
 				nerd_font_variant = "mono",
 			},
