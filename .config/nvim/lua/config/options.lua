@@ -8,17 +8,38 @@ vim.cmd("set relativenumber")
 vim.opt.clipboard = "unnamedplus"
 vim.g.mapleader = " "
 
--- Move lines
-vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
-vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
-vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-vim.keymap.set("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
-vim.keymap.set("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
--- Move lines
-vim.keymap.set("t", "<A-l>", "<C-w>l", { desc = "Move Down" })
-vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
-vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-vim.keymap.set("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
-vim.keymap.set("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+vim.api.nvim_create_autocmd(
+	"LspAttach",
+	{ --  Use LspAttach autocommand to only map the following keys after the language server attaches to the current buffer
+		group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+		callback = function(ev)
+			vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc" -- Enable completion triggered by <c-x><c-o>
+
+			-- Buffer local mappings.
+			-- See `:help vim.lsp.*` for documentation on any of the below functions
+			local opts = { buffer = ev.buf }
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+			vim.keymap.set("n", "<leader><space>", vim.lsp.buf.hover, opts)
+			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+			vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+			vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+
+			vim.keymap.set("n", "<leader>f", function()
+				vim.lsp.buf.format({ async = true })
+			end, opts)
+
+			vim.diagnostic.config({
+				virtual_text = true,
+				underline = true,
+			})
+			-- Open the diagnostic under the cursor in a float window
+			vim.keymap.set("n", "<leader>d", function()
+				vim.diagnostic.open_float({
+					border = "rounded",
+				})
+			end, opts)
+		end,
+	}
+)
