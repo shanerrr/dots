@@ -3,6 +3,7 @@ return {
 		"nvim-mini/mini.nvim",
 		version = "*",
 		config = function()
+			require("mini.surround").setup()
 			require("mini.pairs").setup()
 			require("mini.move").setup()
 			require("mini.comment").setup({
@@ -14,17 +15,6 @@ return {
 				},
 			})
 		end,
-	},
-	{
-		"akinsho/toggleterm.nvim",
-		version = "*",
-		opts = {
-			open_mapping = [[<C-j>]],
-			direction = "horizontal",
-			shade_terminals = true,
-			start_in_insert = false,
-			close_on_exit = true,
-		},
 	},
 	{
 		"folke/persistence.nvim",

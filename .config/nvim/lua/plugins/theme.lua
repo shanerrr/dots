@@ -1,0 +1,1 @@
+/home/shaner/.config/preferences/current/theme/neovim.lua
