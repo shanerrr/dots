@@ -17,7 +17,7 @@ return {
 		end,
 		keys = {
 			{
-				"<S-A-f>",
+				"<S-M-f>",
 				function()
 					require("conform").format({ lsp_format = "fallback" })
 				end,

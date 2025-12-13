@@ -16,6 +16,17 @@ return {
 		end,
 	},
 	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		opts = {
+			open_mapping = [[<C-j>]],
+			direction = "horizontal",
+			shade_terminals = true,
+			start_in_insert = false,
+			close_on_exit = true,
+		},
+	},
+	{
 		"folke/persistence.nvim",
 		event = "BufReadPre", -- this will only start session saving when an actual file was opened
 		opts = {},
@@ -55,6 +66,8 @@ return {
 			},
 			explorer = {
 				enabled = true,
+				replace_netrw = true,
+				follow_file = true,
 			},
 			bigfile = { enabled = true },
 			indent = { enabled = true },
@@ -64,10 +77,10 @@ return {
 				layout = "telescope",
 				sources = {
 					explorer = {
+						auto_close = false,
 						follow_file = true,
-						replace_netrw = true,
+						follow = true,
 						hidden = true,
-						cwd = vim.fn.expand("%:p:h"),
 					},
 				},
 				formatters = {
@@ -82,7 +95,6 @@ return {
 			scroll = { enabled = true },
 			statuscolumn = { enabled = true },
 			words = { enabled = true },
-			terminal = { enabled = true },
 			dashboard = {
 				preset = {
 					pick = nil,
@@ -113,7 +125,14 @@ return {
 							desc = "Config",
 							action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
 						},
-						{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
+						{
+							icon = " ",
+							key = "s",
+							desc = "Restore Session",
+							action = function()
+								require("persistence").load()
+							end,
+						},
 						{
 							icon = "󰒲 ",
 							key = "l",
@@ -150,7 +169,7 @@ return {
 			{
 				"<C-b>",
 				function()
-					Snacks.explorer()
+					Snacks.explorer.open()
 				end,
 				desc = "Open explorer",
 				mode = "n",
@@ -204,35 +223,11 @@ return {
 				mode = "n",
 			},
 			{
-				"<C-j>",
-				function()
-					Snacks.terminal.toggle()
-				end,
-				desc = "Terminal (cwd)",
-				mode = { "n", "t" },
-			},
-			{
-				"<C-t>",
-				function()
-					Snacks.terminal.open()
-				end,
-				desc = "New Terminal (cwd)",
-				mode = "t",
-			},
-			{
-				"<leader>tl",
-				function()
-					Snacks.terminal.list()
-				end,
-				desc = "List Terminal (cwd)",
-				mode = "n",
-			},
-			{
 				"<C-g>",
 				function()
-					Snacks.lazygit.open({ cwd = vim.fn.expand("%:p:h") })
+					Snacks.lazygit.open()
 				end,
-				desc = "Lazy Git",
+				desc = "Lazy Git (cwd)",
 				mode = "n",
 			},
 		},
