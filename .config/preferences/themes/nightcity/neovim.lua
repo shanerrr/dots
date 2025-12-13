@@ -4,7 +4,7 @@ return {
 		lazy = false,
 		opts = { style = "night" },
 		config = function()
-			vim.cmd([[colorscheme tokyonight]])
+			vim.cmd.colorscheme("tokyonight")
 		end,
 	},
 }
