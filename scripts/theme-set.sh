@@ -23,7 +23,7 @@ ln -nsf "$THEME_PATH" "$CURRENT_THEME_DIR"
 
 # Restart components to apply new theme
 bash restart-app.sh waybar
-hyprctl reload
+# hyprctl reload
 pkill -SIGUSR2 btop
 
 # restart terminal
