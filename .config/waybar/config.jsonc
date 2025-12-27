@@ -1,50 +1,47 @@
-{
-  "reload_style_on_change": true,
-  "layer": "top",
-  "position": "top",
-  "margin-top": 6,
-  "margin-bottom": 3,
-  "margin-left": 6,
-  "margin-right": 6,
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": [],
-  "modules-right": [
-    "cpu",
-    "pulseaudio",
-    "clock",
-  ],
-  "hyprland/workspaces": {
-    "on-click": "activate",
-    "format": "{icon}",
-    "format-icons": {
-      "default": "",
-      "active": "󱓻"
+[
+  {
+    "layer": "top",
+    "position": "top",
+    "height": 24,
+    "spacing": 5,
+    "modules-left": [
+      "niri/workspaces"
+    ],
+    "modules-right": [
+      // "cpu",
+      // "memory",
+      "pulseaudio",
+      "clock"
+    ],
+    "niri/workspaces": {
+      "on-click": "activate",
+      "format": "{icon}",
+      "format-icons": {
+        "default": "",
+        "active": ""
+      }
     },
-    "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": []
+    "clock": {
+      "format": "{:%A %B %d %H:%M}",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+    "cpu": {
+      "format": "  {usage}%"
+    },
+    "memory": {
+      "format": "  {}%"
+    },
+    "pulseaudio": {
+      "scroll-step": 5,
+      "format": "{icon}",
+      "format-icons": {
+        "default": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "on-click": "kitty --class=Wiremix -e wiremix"
     }
-  },
-  "cpu": {
-    "interval": 5,
-    "format": "󰍛",
-    "on-click": "kitty -e btop"
-  },
-  "clock": {
-    "format": "{:%B %d %H:%M}",
-    "tooltip": false
-  },
-  "pulseaudio": {
-    "format": "{icon}",
-    "on-click": "kitty --class=Wiremix -e wiremix",
-    "tooltip-format": "Playing at {volume}%",
-    "scroll-step": 5,
-    "format-muted": "",
-    "format-icons": {
-      "default": ["", "", ""]
-    }
-  } 
-}
+  }
+]

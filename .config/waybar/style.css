@@ -1,56 +1,65 @@
 @import '../preferences/current/theme/waybar.css';
 
 * {
-  background-color: transparent;
-  color: @foreground;
-  border: none;
-  border-radius: 0;
   font-family: CaskaydiaMono Nerd Font;
   font-size: 14px;
+  min-height: 0;
+  padding: 0.1rem;
 }
 
-#workspaces button {
-  all: initial;
-  padding: 0px 5px;
-  min-width: 9px;
-}
-
-#workspaces button.empty {
-  opacity: 0.5;
-}
-
-#workspaces {
-  background-color: @background;
-  border-radius: 12px;
-  padding: 4px 6px;
+window#waybar {
+  background: @background;
+  color: @text;
 }
 
 tooltip {
-  padding: 2px;
+  background: @background;
 }
 
-#cpu, #pulseaudio {
-  background-color: @background;
+tooltip label {
+  color: @text;
 }
 
-#cpu {
-  border-radius: 12px 0 0 12px;
-  padding: 0px 7px 0px 12px;
+#workspaces {
+  border: none;
+  outline: none;
 }
 
-#pulseaudio {
-  border-radius: 0 12px 12px 0;
-  padding: 0px 14px 0px 7px;
-  margin: 0 6px 0 0;
+#workspaces button {
+  color: @text;
+  opacity: 0.5;
 }
 
-#clock {
-  background-color: @background;
-  border-radius: 12px;
-  padding: 0px 14px;
+#workspaces button.focused {
+  opacity: 1;
 }
 
-.hidden {
-  opacity: 0;
+#workspaces button:hover {
+  background: transparent;
 }
 
+#mode,
+#clock,
+#battery {
+  padding: 0 10px;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#pulseaudio,
+#wireplumber {
+  margin: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  color: @text;
+}
+
+.modules-left>widget:first-child>#workspaces {
+  margin-left: 0;
+}
+
+.modules-right>widget:last-child>#workspaces {
+  margin-right: 0;
+}
