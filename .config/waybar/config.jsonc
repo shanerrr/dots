@@ -2,9 +2,10 @@
   {
     "layer": "top",
     "position": "top",
-    "height": 24,
-    "spacing": 5,
+    "height": 20,
+    // "spacing": 5,
     "modules-left": [
+      "custom/logo",
       "niri/workspaces"
     ],
     "modules-right": [
@@ -36,12 +37,15 @@
       "format": "{icon}",
       "format-icons": {
         "default": [
-          "",
-          "",
-          ""
+          "\uf026",
+          "\uf027"
         ]
       },
       "on-click": "kitty --class=Wiremix -e wiremix"
+    },
+    "custom/logo": {
+      "format": "<span rise='-1000'></span>",
+      "tooltip": false
     }
   }
 ]

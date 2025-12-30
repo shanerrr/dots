@@ -16,6 +16,7 @@ include "windows.kdl"
 
 spawn-at-startup "waybar"
 spawn-at-startup "hyprpaper"
+spawn-sh-at-startup "wlsunset -l 53.525 -L -113.515 -t 3500 -T 6500"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"

@@ -51,7 +51,6 @@ layout {
     border {
         on
         width 3
-        active-gradient from="#33ccffee" to="#00ff99ee" angle=45 relative-to="workspace-view" 
         inactive-color "#595959aa"
 
         // Color of the border around windows that request your attention.
