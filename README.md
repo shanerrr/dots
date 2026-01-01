@@ -5,6 +5,7 @@ rofi
 libnewt
 wl-clipboard
 wlsunset
+wpaperd
 
 
 Within the root of this repo, just run `stow .`
