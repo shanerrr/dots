@@ -1,5 +1,5 @@
 layout {
-  border {
-    active-color "7d82d9"
-  }
+    border {
+        active-color "7d82d9"
+    }
 }

@@ -6,7 +6,7 @@
     min-height: 0;
     font-family: JetBrains Mono;
     color: @foreground;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .modules-left {
@@ -64,7 +64,7 @@ tooltip {
 }
 
 #clock {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 #pulseaudio {
