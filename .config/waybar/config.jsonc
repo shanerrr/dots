@@ -1,51 +1,59 @@
 [
-  {
-    "layer": "top",
-    "position": "top",
-    "height": 20,
-    // "spacing": 5,
-    "modules-left": [
-      "custom/logo",
-      "niri/workspaces"
-    ],
-    "modules-right": [
-      // "cpu",
-      // "memory",
-      "pulseaudio",
-      "clock"
-    ],
-    "niri/workspaces": {
-      "on-click": "activate",
-      "format": "{icon}",
-      "format-icons": {
-        "default": "",
-        "active": ""
-      }
-    },
-    "clock": {
-      "format": "{:%A %B %d %H:%M}",
-      "tooltip-format": "<tt><small>{calendar}</small></tt>"
-    },
-    "cpu": {
-      "format": "  {usage}%"
-    },
-    "memory": {
-      "format": "  {}%"
-    },
-    "pulseaudio": {
-      "scroll-step": 5,
-      "format": "{icon}",
-      "format-icons": {
-        "default": [
-          "\uf026",
-          "\uf027"
-        ]
-      },
-      "on-click": "kitty --class=Wiremix -e wiremix"
-    },
-    "custom/logo": {
-      "format": "<span rise='-1000'></span>",
-      "tooltip": false
+    {
+        "layer": "top",
+        "position": "top",
+        "height": 20,
+        "modules-left": [
+            "custom/logo",
+            "niri/workspaces"
+        ],
+        "modules-center" :[
+            "clock"
+        ],
+        "modules-right": [
+            "cpu",
+            "memory",
+            "pulseaudio",
+            "custom/activity"
+        ],
+        "niri/workspaces": {
+            "on-click": "activate",
+            "format": "{icon}",
+            "format-icons": {
+                "default": "",
+                "active": ""
+            }
+        },
+        "clock": {
+            "format": "{:%a %B %d, %H:%M}",
+            "tooltip-format": "<tt><small>{calendar}</small></tt>"
+        },
+        "custom/activity": {
+            "on-click": "kitty -e btop",
+            "tooltip": false,
+            "format": "󰨇 "
+        },
+        "cpu": {
+            "format": "  {usage}%"
+        },
+        "memory": {
+            "format": "  {}%"
+        },
+        "pulseaudio": {
+            "scroll-step": 5,
+            "format": "{icon}",
+            "format-icons": {
+                "default": [
+                    "\uf026",
+                    "\uf027"
+                ]
+            },
+            "tooltip-format": "Playing at {volume}%",
+            "on-click": "kitty --class=Wiremix -e wiremix"
+        },
+        "custom/logo": {
+            "format": "",
+            "tooltip": false
+        }
     }
-  }
 ]

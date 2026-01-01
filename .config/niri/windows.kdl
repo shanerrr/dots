@@ -6,7 +6,7 @@
 // by setting an empty default-column-width.
 window-rule {
     match is-active=true
-    opacity 0.99
+    opacity 0.97
 }
 
 // Rule for all inactive (unfocused) windows
