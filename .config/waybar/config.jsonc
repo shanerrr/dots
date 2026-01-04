@@ -52,7 +52,7 @@
             "on-click": "kitty --class=Wiremix -e wiremix"
         },
         "custom/logo": {
-            "format": "",
+            "format": "",
             "tooltip": false
         }
     }
