@@ -1,56 +1,82 @@
 @import '../preferences/current/theme/waybar.css';
 
 * {
-  background-color: transparent;
-  color: @foreground;
-  border: none;
-  border-radius: 0;
-  font-family: CaskaydiaMono Nerd Font;
-  font-size: 14px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    font-family: JetBrains Mono;
+    color: @foreground;
+    font-size: 13px;
 }
 
-#workspaces button {
-  all: initial;
-  padding: 0px 5px;
-  min-width: 9px;
+.modules-left {
+    border-radius: 2rem;
+    background: @surface;
+    margin: 0.3rem 0.5rem;
+    padding: 0.3rem 0.5rem;
 }
 
-#workspaces button.empty {
-  opacity: 0.5;
+#custom-logo {
+    font-family: CaskaydiaMono Nerd Font;
+    font-size: 15px;
 }
 
+#custom-logo,
 #workspaces {
-  background-color: @background;
-  border-radius: 12px;
-  padding: 4px 6px;
+    padding: 0 0.6rem;
+}
+
+window#waybar {
+    background: @background;
 }
 
 tooltip {
-  padding: 2px;
+    background: @background;
 }
 
-#cpu, #pulseaudio {
-  background-color: @background;
+#workspaces button {
+    background: transparent;
+    color: @selected-text;
+    opacity: 0.5;
+    padding: 0 0.2rem;
+}
+
+#workspaces button.focused {
+    opacity: 1;
+}
+
+#workspaces button:hover {
+    background: transparent;
 }
 
 #cpu {
-  border-radius: 12px 0 0 12px;
-  padding: 0px 7px 0px 12px;
+    background: @surface;
+    margin: 0.3rem 0 0.3rem 0.5rem;
+    padding: 0.3rem 0.5rem 0.3rem 0.7rem;
+    border-radius: 2rem 0 0 2rem;
 }
 
-#pulseaudio {
-  border-radius: 0 12px 12px 0;
-  padding: 0px 14px 0px 7px;
-  margin: 0 6px 0 0;
+#memory {
+    background: @surface;
+    margin: 0.3rem 0.5rem 0.3rem 0;
+    padding: 0.3rem 0.7rem 0.3rem 0.5rem;
+    border-radius: 0 2rem 2rem 0;
 }
 
 #clock {
-  background-color: @background;
-  border-radius: 12px;
-  padding: 0px 14px;
+    font-weight: 700;
 }
 
-.hidden {
-  opacity: 0;
+#pulseaudio {
+    background: @surface;
+    margin: 0.3rem 0 0.3rem 0.5rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 2rem 0 0 2rem;
 }
 
+#custom-activity {
+    background: @surface;
+    margin: 0.3rem 0.5rem 0.3rem 0;
+    padding: 0.3rem 0.7rem;
+    border-radius: 0 2rem 2rem 0;
+}

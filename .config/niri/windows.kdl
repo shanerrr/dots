@@ -1,0 +1,35 @@
+// Window rules let you adjust behavior for individual windows.
+// Find more information on the wiki:
+// https://yalter.github.io/niri/Configuration:-Window-Rules
+
+// Work around WezTerm's initial configure bug
+// by setting an empty default-column-width.
+window-rule {
+    match is-active=true
+    opacity 0.97
+}
+
+// Rule for all inactive (unfocused) windows
+window-rule {
+    match is-active=false
+    opacity 0.90
+}
+
+// fix flashing border colour issue
+window-rule {
+    match app-id="zen"
+    draw-border-with-background false
+}
+
+// no opacity on playing videos
+window-rule {
+    match app-id="zen" 
+    match title=r#"(Twitch|YouTube|Kick)"# 
+    opacity 1.0
+}
+
+// enable rounded corners for all windows.
+// window-rule {
+//     geometry-corner-radius 4
+//     clip-to-geometry true
+// }

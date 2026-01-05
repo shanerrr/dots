@@ -1,50 +1,59 @@
-{
-  "reload_style_on_change": true,
-  "layer": "top",
-  "position": "top",
-  "margin-top": 6,
-  "margin-bottom": 3,
-  "margin-left": 6,
-  "margin-right": 6,
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": [],
-  "modules-right": [
-    "cpu",
-    "pulseaudio",
-    "clock",
-  ],
-  "hyprland/workspaces": {
-    "on-click": "activate",
-    "format": "{icon}",
-    "format-icons": {
-      "default": "",
-      "active": "󱓻"
-    },
-    "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": []
+[
+    {
+        "layer": "top",
+        "position": "top",
+        "height": 20,
+        "modules-left": [
+            "custom/logo",
+            "niri/workspaces"
+        ],
+        "modules-center" :[
+            "clock"
+        ],
+        "modules-right": [
+            "cpu",
+            "memory",
+            "pulseaudio",
+            "custom/activity"
+        ],
+        "niri/workspaces": {
+            "on-click": "activate",
+            "format": "{icon}",
+            "format-icons": {
+                "default": "",
+                "active": ""
+            }
+        },
+        "clock": {
+            "format": "{:%a %B %d, %H:%M}",
+            "tooltip-format": "<tt><small>{calendar}</small></tt>"
+        },
+        "custom/activity": {
+            "on-click": "kitty -e btop",
+            "tooltip": false,
+            "format": "󰨇 "
+        },
+        "cpu": {
+            "format": "  {usage}%"
+        },
+        "memory": {
+            "format": "  {}%"
+        },
+        "pulseaudio": {
+            "scroll-step": 5,
+            "format": "{icon}",
+            "format-icons": {
+                "default": [
+                    "\uf026",
+                    "\uf027"
+                ]
+            },
+            "tooltip-format": "Playing at {volume}%",
+            "on-click": "kitty --class=Wiremix -e wiremix"
+        },
+        "custom/logo": {
+            "format": "",
+            "tooltip": false
+        }
     }
-  },
-  "cpu": {
-    "interval": 5,
-    "format": "󰍛",
-    "on-click": "kitty -e btop"
-  },
-  "clock": {
-    "format": "{:%B %d %H:%M}",
-    "tooltip": false
-  },
-  "pulseaudio": {
-    "format": "{icon}",
-    "on-click": "kitty --class=Wiremix -e wiremix",
-    "tooltip-format": "Playing at {volume}%",
-    "scroll-step": 5,
-    "format-muted": "",
-    "format-icons": {
-      "default": ["", "", ""]
-    }
-  } 
-}
+]

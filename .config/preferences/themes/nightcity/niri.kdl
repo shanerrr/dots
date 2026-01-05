@@ -1,0 +1,5 @@
+layout{
+  border {
+    active-gradient from="#33ccffee" to="#00ff99ee" angle=45 relative-to="workspace-view" 
+  }
+}
