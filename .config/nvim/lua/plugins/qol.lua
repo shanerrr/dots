@@ -22,6 +22,18 @@ return {
 		opts = {},
 	},
 	{
+		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			{ "windwp/nvim-ts-autotag", opts = {} },
+		},
+		opts = {
+			ensure_installed = { "html", ... },
+			autotag = {
+				enable = true,
+			},
+		},
+	},
+	{
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
